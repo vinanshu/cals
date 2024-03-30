@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculator {
+            background-color: #303030;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .calculator input[type="text"] {
+            width: calc(100% - 20px);
+            margin: 5px 0 15px 0;
+            padding: 10px;
+            font-size: 32px;
+            border: none;
+            border-bottom: 2px solid #212121;
+            outline: none;
+            color: #fff;
+            text-align: right;
+            background-color: transparent;
+            box-sizing: border-box;
+        }
+
+        .calculator input[type="button"] {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            font-size: 24px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            background-color: #424242;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .calculator input[type="button"]:hover {
+            background-color: #616161;
+        }
+
+        .calculator input[type="button"].operator {
+            background-color: #ff9500;
+        }
+
+        .calculator input[type="button"].operator:hover {
+            background-color: #e68a00;
+        }
+
+        .calculator input[type="button"].equals {
+            background-color: #ff5e3a;
+        }
+
+        .calculator input[type="button"].equals:hover {
+            background-color: #e0492f;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+        <input type="text" id="result" disabled>
+        <input type="button" value="7" onclick="appendNumber('7')">
+        <input type="button" value="8" onclick="appendNumber('8')">
+        <input type="button" value="9" onclick="appendNumber('9')">
+        <input type="button" value="/" onclick="appendOperator('/')">
+        <br>
+        <input type="button" value="4" onclick="appendNumber('4')">
+        <input type="button" value="5" onclick="appendNumber('5')">
+        <input type="button" value="6" onclick="appendNumber('6')">
+        <input type="button" value="*" onclick="appendOperator('*')">
+        <br>
+        <input type="button" value="1" onclick="appendNumber('1')">
+        <input type="button" value="2" onclick="appendNumber('2')">
+        <input type="button" value="3" onclick="appendNumber('3')">
+        <input type="button" value="-" onclick="appendOperator('-')">
+        <br>
+        <input type="button" value="0" onclick="appendNumber('0')">
+        <input type="button" value="." onclick="appendDecimal()">
+        <input type="button" value="=" onclick="calculate()">
+        <input type="button" value="+" onclick="appendOperator('+')">
+        <br>
+        <input type="button" value="C" onclick="clearInput()">
+    </div>
+
+    <script>
+        function appendNumber(number) {
+            document.getElementById('result').value += number;
+        }
+
+        function appendOperator(operator) {
+            var result = document.getElementById('result').value;
+            var lastChar = result[result.length - 1];
+            if (lastChar !== '+' && lastChar !== '-' && lastChar !== '*' && lastChar !== '/') {
+                document.getElementById('result').value += operator;
+            }
+        }
+
+        function appendDecimal() {
+            var result = document.getElementById('result').value;
+            if (result.indexOf('.') === -1) {
+                document.getElementById('result').value += '.';
+            }
+        }
+
+        function calculate() {
+            document.getElementById('result').value = "miss kita";
+        }
+
+        function clearInput() {
+            document.getElementById('result').value = '';
+        }
+    </script>
+
+</body>
+
+</html>
